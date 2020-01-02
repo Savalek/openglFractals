@@ -7,20 +7,20 @@ import com.example.openglfractals.shader.ShaderFile;
 
 import static android.opengl.GLES20.*;
 
-public class OpenGLProgram {
+class OpenGLProgram {
     private final Context context;
     private final int vertexShaderResourceId;
     private final int fragmentShaderResourceId;
 
     private int programId;
 
-    public OpenGLProgram(Context context, int vertexShaderResourceId, int fragmentShaderResourceId) {
+    OpenGLProgram(Context context, int vertexShaderResourceId, int fragmentShaderResourceId) {
         this.context = context;
         this.vertexShaderResourceId = vertexShaderResourceId;
         this.fragmentShaderResourceId = fragmentShaderResourceId;
     }
 
-    public void start() {
+    void start() {
         int programId = glCreateProgram();
         if (programId == 0) {
             throw new RuntimeException("Can't create openGL program");
@@ -52,7 +52,7 @@ public class OpenGLProgram {
         glAttachShader(programId, shader.id());
     }
 
-    public int id() {
+    int id() {
         return programId;
     }
 }
